@@ -33,8 +33,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SF_VS.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,22 +54,34 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Compile Include="Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="constants.cs" />
+    <Compile Include="CurrentPlotting.cs" />
+    <Compile Include="globals.cs" />
+    <Compile Include="parameter.cs" />
+    <Compile Include="ReadParams.cs" />
+    <Compile Include="remembrance_of_fileName.cs" />
+    <Compile Include="roaming_discretes.cs" />
+    <Compile Include="Scull-Furnaces-AppMain.xaml.cs">
+      <DependentUpon>Scull-Furnaces-AppMain.xaml</DependentUpon>
+    </Compile>
+    <ApplicationDefinition Include="Scull-Furnaces-AppMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Scull-Furnaces-WindowMain.xaml.cs">
+      <DependentUpon>Scull-Furnaces-WindowMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="TabControlEx.cs" />
+    <Compile Include="TransformWorldToScreen.cs" />
+    <Compile Include="typeofparameters.cs" />
+    <Compile Include="VacuumPlotting.cs" />
+    <Compile Include="VisualHostForPlot.cs" />
+    <Compile Include="VisualHostForPlot_1.cs" />
+    <Compile Include="VoltagePlotting.cs" />
+    <Compile Include="WaterPlotting.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -92,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Clock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Scull-Furnaces-WindowMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

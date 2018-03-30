@@ -1,0 +1,46 @@
+<Window x:Class = "M" xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:" WindowState="Maximized">
+<x:Code>
+<![CDATA[
+Plot plot;
+void DrawPlot(object o, EventArgs ea)
+{
+	plot = new Plot(){canvas_to_draw_upon= this.can,main_window=this};
+	RightClock.clockWatch.AlarmProcedure += LowerTimeBorderOnThePlotChanged;
+	LeftClock.clockWatch.AlarmProcedure += UpperTimeBorderOnThePlotChanged;
+	RightClock.clockWatch.Ticks = 86399;
+}
+void LowerTimeBorderOnThePlotChanged(AlarmEventArgs aea)
+{
+	can.Children.Clear();
+	plot.draw_plot(Int32.Parse(LeftClock.Ticks.Text),aea.TicksToAlarm);
+}
+void UpperTimeBorderOnThePlotChanged(AlarmEventArgs aea)
+{
+	can.Children.Clear();
+	plot.draw_plot(aea.TicksToAlarm,Int32.Parse(RightClock.Ticks.Text));
+	
+}
+
+]]>
+</x:Code>
+<Grid Name="grid" ShowGridLines = "True">
+<Grid.RowDefinitions>
+	<RowDefinition Height ="20*"/>
+	<RowDefinition Height ="2*"/>
+</Grid.RowDefinitions>
+<Grid.ColumnDefinitions>
+	<ColumnDefinition Width ="*"/>
+	<ColumnDefinition Width ="20*"/>
+</Grid.ColumnDefinitions>
+<DockPanel  LastChildFill  ="False">
+<TextBox Name="TopLimit" Text="100" DockPanel.Dock="Top"/>
+<TextBox Name="BottomLimit" Text="0" DockPanel.Dock="Bottom"/>
+</DockPanel>
+<Canvas Name = "can" Grid.Row = "0" Grid.Column="1" Loaded = "DrawPlot">
+</Canvas>
+<DockPanel Grid.Row="1" Grid.Column="1" LastChildFill  ="False">
+<local:Clock x:Name = "LeftClock" DockPanel.Dock="Left"/>
+<local:Clock x:Name = "RightClock" DockPanel.Dock="Right"/>
+</DockPanel>
+</Grid>
+</Window>

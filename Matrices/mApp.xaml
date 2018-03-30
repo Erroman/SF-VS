@@ -1,0 +1,2 @@
+<Application x:Class="mApp"  xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="m.xaml">
+</Application>

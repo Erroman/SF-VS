@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0" DefaultTargets="Build">
+<PropertyGroup>
+<OutputPath>.\</OutputPath>
+</PropertyGroup>
+<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+<ItemGroup>
+     <ApplicationDefinition Include="App.xaml"/>
+</ItemGroup>
+<ItemGroup>
+     <Page Include="MainWindow.xaml"/>
+</ItemGroup>
+<ItemGroup>
+     <Page Include="CP.xaml"/>
+</ItemGroup>
+<ItemGroup>
+     <Page Include="GP.xaml"/>
+</ItemGroup>
+<ItemGroup>
+	 <Compile Include="GP.xaml.cs"/>
+	 <Compile Include="TabControlEx.cs"/>
+</ItemGroup>
+<ItemGroup>
+     <Reference Include="WindowsBase" />
+     <Reference Include="PresentationCore" />
+     <Reference Include="PresentationFramework" />
+	 <Reference Include="System" />
+	 <Reference Include="System.Windows.Forms" />
+	 <Reference Include="System.Xaml" />
+</ItemGroup>
+</Project>

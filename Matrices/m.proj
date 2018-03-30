@@ -1,0 +1,24 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <PropertyGroup>
+ <OutputPath>.\</OutputPath>
+ <!-- OutputType>WinExe</OutputType -->
+ </PropertyGroup>
+ <ItemGroup>
+<ApplicationDefinition Include="mApp.xaml">
+
+</ApplicationDefinition>
+<Reference Include="PresentationCore"/>
+<Reference Include="PresentationFramework"/>
+<Reference Include="WindowsBase"/>
+<Reference Include="System.Xaml"/>
+<Reference Include="System"/>
+<Compile Include="mApp.xaml.cs"/>
+<Compile Include="m.xaml.cs"/>
+<Page Include="m.xaml"/>
+</ItemGroup>
+<ItemGroup>
+    <Resource Include="I.jpg" />
+</ItemGroup>
+ <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+ </Project>

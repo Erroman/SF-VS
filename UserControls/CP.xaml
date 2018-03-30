@@ -1,0 +1,108 @@
+<UserControl x:Class="ColorPicker" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Name="colorPicker">
+<x:Code>
+<![CDATA[
+public static DependencyProperty ColorProperty;
+public static DependencyProperty RedProperty;
+public static DependencyProperty GreenProperty;
+public static DependencyProperty BlueProperty;
+
+public static readonly RoutedEvent ColorChangedEvent;
+
+static ColorPicker()
+{	
+ColorProperty = DependencyProperty.Register("Color", typeof(Color), typeof(ColorPicker),
+new FrameworkPropertyMetadata(Colors.Black,new PropertyChangedCallback(OnColorChanged)));
+RedProperty = DependencyProperty.Register("Red", typeof(byte), typeof(ColorPicker),
+new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
+GreenProperty = DependencyProperty.Register("Green", typeof(byte), typeof(ColorPicker),
+new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
+BlueProperty = DependencyProperty.Register("Blue", typeof(byte), typeof(ColorPicker),
+new FrameworkPropertyMetadata(new PropertyChangedCallback(OnColorRGBChanged)));
+
+ColorChangedEvent = EventManager.RegisterRoutedEvent(
+"ColorChanged", RoutingStrategy.Bubble,
+typeof(RoutedPropertyChangedEventHandler<Color>), typeof(ColorPicker));
+}
+public Color Color
+{
+get { return (Color)GetValue(ColorProperty); }
+set { SetValue(ColorProperty, value); }
+}
+public byte Red
+{
+get { return (byte)GetValue(RedProperty); }
+set { SetValue(RedProperty, value); }
+}
+public byte Green
+{
+get { return (byte)GetValue(GreenProperty); }
+set { SetValue(GreenProperty, value); }
+}
+public byte Blue
+{
+get { return (byte)GetValue(BlueProperty); }
+set { SetValue(BlueProperty, value); }
+}
+private static void OnColorRGBChanged(DependencyObject sender,
+DependencyPropertyChangedEventArgs e)
+{
+ColorPicker colorPicker = (ColorPicker)sender;
+Color color = colorPicker.Color;
+if (e.Property == RedProperty)
+color.R = (byte)e.NewValue;
+else if (e.Property == GreenProperty)
+color.G = (byte)e.NewValue;
+else if (e.Property == BlueProperty)
+color.B = (byte)e.NewValue;
+colorPicker.Color = color;
+}
+private static void OnColorChanged(DependencyObject sender,
+DependencyPropertyChangedEventArgs e)
+{
+Color newColor = (Color)e.NewValue;
+Color oldColor = (Color)e.OldValue;
+ColorPicker colorPicker = (ColorPicker)sender;
+colorPicker.Red = newColor.R;
+colorPicker.Green = newColor.G;
+colorPicker.Blue = newColor.B;
+
+RoutedPropertyChangedEventArgs<Color> args =
+new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor);
+args.RoutedEvent = ColorPicker.ColorChangedEvent;
+colorPicker.RaiseEvent(args);
+}
+public event RoutedPropertyChangedEventHandler<Color> ColorChanged
+{
+add { AddHandler(ColorChangedEvent, value); }
+remove { RemoveHandler(ColorChangedEvent, value); }
+}
+public ColorPicker(){
+InitializeComponent();}
+]]> 
+</x:Code>
+<Grid>
+<Grid.RowDefinitions>
+<RowDefinition Height="Auto"></RowDefinition>
+<RowDefinition Height="Auto"></RowDefinition>
+<RowDefinition Height="Auto"></RowDefinition>
+</Grid.RowDefinitions>
+<Grid.ColumnDefinitions>
+<ColumnDefinition></ColumnDefinition>
+<ColumnDefinition Width="Auto"></ColumnDefinition>
+</Grid.ColumnDefinitions>
+<Slider Name="sliderRed" Minimum="0" Maximum="255"
+Value="{Binding ElementName=colorPicker,Path=Red}"></Slider>
+<Slider Grid.Row="1" Name="sliderGreen" Minimum="0" Maximum="255"
+Value="{Binding ElementName=colorPicker,Path=Green}"></Slider>
+<Slider Grid.Row="2" Name="sliderBlue" Minimum="0" Maximum="255"
+Value="{Binding ElementName=colorPicker,Path=Blue}"></Slider>
+<Rectangle Grid.Column="1" Grid.RowSpan="3"
+Width="50" Stroke="Black" StrokeThickness="1">
+<Rectangle.Fill>
+<SolidColorBrush Color="{Binding ElementName=colorPicker,Path=Color}">
+</SolidColorBrush>
+</Rectangle.Fill>
+</Rectangle>
+</Grid>
+</UserControl>

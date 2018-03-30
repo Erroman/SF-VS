@@ -1,0 +1,17 @@
+<UserControl x:Class="GraphPlotter" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Name="graphPlotter" Loaded = "GraphPlotter_Loaded">
+<x:Code>
+<![CDATA[
+public GraphPlotter(){
+InitializeComponent();}
+]]>
+</x:Code>
+
+<Border BorderThickness="10" BorderBrush="GreenYellow">
+<Canvas Name="canGraph" Background="White"
+            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+			
+</Canvas>			
+</Border>
+
+</UserControl>

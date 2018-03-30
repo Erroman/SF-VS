@@ -1,0 +1,27 @@
+<Project xmlns = "http://schemas.microsoft.com/developer/msbuild/2003">
+<PropertyGroup>
+<OutputPath>.\</OutputPath>
+<!-- OutputType>WinExe</OutputType -->
+</PropertyGroup>
+<ItemGroup>
+	<ApplicationDefinition Include="gApp.xaml"/>
+	<Page Include = "LineChartExample.xaml"/>
+	<Compile Include = "LineChartExample.xaml.cs"/>
+	<Page Include = "LineChartWithGridLines.xaml"/>
+	<Compile Include = "LineChartWithGridLines.xaml.cs"/>
+	<Compile Include = "DataCollection.cs"/>
+	<Compile Include = "DataSeries.cs"/>
+	<Compile Include = "ChartStyle.cs"/>
+	<Compile Include = "ChartStyleGridLines.cs"/>
+	<Compile Include = "Symbols.cs"/>
+</ItemGroup>
+<ItemGroup>
+	<Reference Include="PresentationCore"/>
+	<Reference Include="PresentationFramework"/>
+	<Reference Include="WindowsBase"/>
+	<Reference Include="System.Xaml"/>
+	<Reference Include="System"/>
+</ItemGroup>
+ <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+</Project>

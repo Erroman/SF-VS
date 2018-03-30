@@ -1,0 +1,25 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"  ToolsVersion="4.0">
+<PropertyGroup>
+<MessProp>$(MSBuildBinPath)</MessProp>
+<OutputPath>.\</OutputPath>
+</PropertyGroup>
+<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+<ItemGroup>
+ <ApplicationDefinition Include   = "mApp.xaml" />
+     <Reference Include="WindowsBase" />
+     <Reference Include="PresentationCore" />
+     <Reference Include="PresentationFramework" />
+	 <Reference Include="System" />
+	 <Reference Include="System.Windows.Forms" />
+	 <Reference Include="System.Xaml" />
+	 <Reference Include="System.Configuration" />
+	 
+	 <Compile Include="Clock.xaml.cs"/>
+</ItemGroup>
+<ItemGroup>
+     <Page Include="m.xaml"/>
+	 <Page Include="Clock.xaml"/>
+</ItemGroup>
+<Target Name="Scull-Furnaces">
+</Target>
+</Project>

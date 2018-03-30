@@ -1,0 +1,1 @@
+csc c.cs /r:"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\PresentationCore.dll"

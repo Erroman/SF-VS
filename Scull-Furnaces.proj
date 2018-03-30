@@ -1,0 +1,44 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"  ToolsVersion="4.0">
+<PropertyGroup>
+<MessProp>$(MSBuildBinPath)</MessProp>
+<OutputPath>.\</OutputPath>
+</PropertyGroup>
+<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+<ItemGroup>
+ <ApplicationDefinition Include   = "Scull-Furnaces-AppMain.xaml"/>
+     <Reference Include="WindowsBase" />
+     <Reference Include="PresentationCore" />
+     <Reference Include="PresentationFramework" />
+	 <Reference Include="System" />
+	 <Reference Include="System.Windows.Forms" />
+	 <Reference Include="System.Xaml" />
+	 <Reference Include="System.Configuration" />
+	 
+	 <Compile Include="Scull-Furnaces-AppMain.xaml.cs"/>
+	 <Compile Include="Scull-Furnaces-WindowMain.xaml.cs"/>
+	 <Compile Include="typeofparameters.cs"/>
+	 <Compile Include="ReadParams.cs"/>
+	 <Compile Include="parameter.cs"/>
+	 <Compile Include="constants.cs"/>
+	 <Compile Include="globals.cs"/>
+	 <Compile Include="remembrance_of_fileName.cs"/>
+	 <Compile Include="roaming_discretes.cs"/>
+	 <Compile Include="GP.xaml.cs"/>
+	 <Compile Include="TabControlEx.cs"/>
+	 <Compile Include="VisualHostForPlot.cs"/>
+	 <Compile Include="VisualHostForPlot_1.cs"/>
+	 <Compile Include="VoltagePlotting.cs"/>
+	 <Compile Include="CurrentPlotting.cs"/>
+	 <Compile Include="VacuumPlotting.cs"/>
+	 <Compile Include="WaterPlotting.cs"/>
+	 <Compile Include="TransformWorldToScreen.cs"/>
+	 <Compile Include="Clock.xaml.cs"/>
+</ItemGroup>
+<ItemGroup>
+     <Page Include="Scull-Furnaces-WindowMain.xaml"/>
+	 <Page Include="GP.xaml"/>
+	 <Page Include="Clock.xaml"/>
+</ItemGroup>
+<Target Name="Scull-Furnaces">
+</Target>
+</Project>
